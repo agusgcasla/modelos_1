@@ -135,7 +135,8 @@ def main():
     entrega = leer_problema("problema_uno.txt")
     caminos = calcular_caminos(entrega)
     mejor_camino = sorted(caminos, key=lambda par: par[1])[0]
-    
+    # La posición 0 del vector mejor_camino contiene el recorrido, la posición 1 contiene la distancia total y 
+    # la posicion 2 contiene un vector con los pares X,Y, la demanda y el número de cada sucursal en el orden en el que fueron recorridas
     
 
 
