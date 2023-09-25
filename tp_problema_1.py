@@ -135,9 +135,6 @@ def main():
     entrega = leer_problema("problema_uno.txt")
     caminos = calcular_caminos(entrega)
     mejor_camino = sorted(caminos, key=lambda par: par[1])[0]
-    archivo = open("entrega_problema_uno.txt", "w")
-    for i in mejor_camino[0]:
-        archivo.write(str(i) + " ")    
     
     
 
