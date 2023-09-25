@@ -1,0 +1,37 @@
+Tp modelos
+
+
+Entrada 1
+
+
+Mi primer paso es ver una forma de leer el archivo para recopilar los datos. Todavía no pensé cómo armar el modelo.
+
+
+Entrada 2 (15/09/23)
+
+
+Todavía no pensé la forma en la cual leeré el archivo, se me ocurrió más o menos cómo guardar la información. Crearé una clase para una entrega como tal, que constará de la capacidad del camión y un array de sucursales(otra clase creada x mi que contiene la demanda de esa sucursal, su posición y su número)
+
+
+Entrada 3 (16/09/23)
+
+
+Finalmente tuve que crear otra clase llamada sucursal_ordenada ya que tenía que frenar para leer los datos de la posición, y para eso primero cree n sucursales (150 en este caso) y luego cree n sucursales ordenadas, las cuales están compuestas de una clase sucursal y sus coordenadas x e y (las creé a medida que se leía el archivo). Parece funcionar.
+
+
+Entrada 4 (22/09/23)
+ 
+Bueno parece que ya lo terminé, analicé primero implementar un algoritmo que busque una solución que tienda a la óptima. Pensé en un algoritmo que genere 10 caminos al azar, ordenados del mejor (mas corto) a peor (más largo), quedarme con los mejores 5, agarrar secciones al azar de esos 5 para armar otros 5 caminos posibles (así vuelvo a tener 10 vectores, los reordeno y repito el proceso) hasta que vea que la mejora es muy chica y corto el algoritmo ahí. Pero después pensé en una forma de buscar una opción lo suficientemente buena de forma más simple de implementar. Arrancando en una sucursal x, se busca la próxima sucursal más cercana, luego se busca la próxima sucursal más cercana (sin repetir sucursales) y así hasta formar el camino completo. A medida que se arma el camino voy sumando las distancias. Repetí este proceso empezando por todas las sucursales posibles y luego elegí aquel camino con la menor distancia como la solución del problema. 
+Me había olvidado la parte de la carga, por lo cual agregué una verificación que controla que además de no ser una sucursal repetida, la demanda de la próxima sucursal no lleve a la carga por debajo de cero o por encima del máximo y también parece funcionar. Grafiqué el camino en excel y comprobé que en ningún momento se pasase del límite de carga o disminuyese por debajo de 0. 
+
+
+Impresiones del TP
+
+
+En un principio parecía que iba a ser más fácil, pero cuando me lo puse a hacer vi que no era tan simple. Aún así no me pareció de una dificultad alta, simplemente que había que pensarlo. La solución óptima quizás no sea difícil de alcanzar en términos de complejidad algorítmica, por fuerza bruta se pueden comparar todos los caminos posibles, pero esto no se puede hacer debido a la capacidad computacional limitada y entonces hay que buscar una buena solución de forma que consuma menos recursos.
+
+
+Comentarios finales
+
+
+Con este método conseguí una solución por debajo de los 8000. Aún así sé que esta no tiene por qué ser la óptima (no creo que lo sea), ya que con este método hay combinaciones que no son probadas debido a la forma en la que se elige la próxima sucursal. Al ir construyendo el camino solo comparando entre la última sucursal visitada y la próxima a visitar, no se consideran caminos que son más óptimos a largo plazo. Otra forma de buscar la solución hubiese sido la que expliqué más arriba pero considerando también las demandas de cada sucursal. Creo que el apartado de las demandas lo hubiese hecho más complicado de implementar, por lo que decidí quedarme con el método que utilicé.
