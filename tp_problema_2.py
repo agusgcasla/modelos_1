@@ -99,9 +99,11 @@ def calcular_caminos(entrega):
     matriz_de_distancias = entrega.matriz_de_distancias()
     sucursales = entrega.getSucursales()
     recorridos = []
-    i = 3
-    while(len(recorridos) != 15):
-        print(i)
+    indices_posibles = [*range(0,len(sucursales))]
+    while(len(recorridos) != 1):
+        
+        i = choice(indices_posibles)
+        indices_posibles.remove(i)
         recorrido = []
         recorrido.append(i+1)        
         distancia_total = 0
@@ -121,7 +123,7 @@ def calcular_caminos(entrega):
             if(carga < 0 or carga > entrega.getCapacidad()):
                 recorrido_valido = False
             
-            while(recorrido.__contains__(ordenado[indice][0]) or (sucursales[int(ordenado[indice][0]-1)].getDemanda() + carga <= 0) or sucursales[int(ordenado[indice][0]-1)].getDemanda() + carga >  + entrega.getCapacidad()):
+            while(recorrido.__contains__(ordenado[indice][0]) or (sucursales[int(ordenado[indice][0]-1)].getDemanda() + carga < 0) or sucursales[int(ordenado[indice][0]-1)].getDemanda() + carga >  + entrega.getCapacidad()):
                 indice = indice + 1
                 if(indice >= len(sucursales)):
                     recorrido_valido = False
@@ -142,7 +144,8 @@ def calcular_caminos(entrega):
     
     return recorridos
 
-#ESTO NO ES UTILIZADO PARA LA OBTENCIÓN DE LA SOLUCIÓN
+#LO QUE SE ENCUENTRA POR DEBAJO NO ES UTILIZADO PARA LA OBTENCIÓN DE LA SOLUCIÓN
+
 #-----------------------------------------------------
 
 def generar_posibles_recorridos(sucursales, cantidad):
@@ -225,9 +228,6 @@ def main():
     entrega = leer_problema("segundo_problema.txt")
     caminos = calcular_caminos(entrega)
     mejor_camino = sorted(caminos, key=lambda par: par[1])[0]
-    file = open("respuesta.txt", "w")
-    for i in mejor_camino[0]:
-        file.write(str(i) + " ")
     print(mejor_camino[1])
     # La posición 0 del vector mejor_camino contiene el recorrido, la posición 1 contiene la distancia total y 
     # la posicion 2 contiene un vector con los pares X,Y, la demanda y el número de cada sucursal en el orden en el que fueron recorridas

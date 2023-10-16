@@ -1,0 +1,33 @@
+TP modelos 1
+
+COMENTARIOS DEL PROBLEMA A MEDIDA QUE LO RESUELVO.
+
+Entrada 1 (Jueves 5/10/23)
+
+Como primer paso voy a correr al problema 2 con el mismo código que el problema 1, lo cual ya me veo que va a tardar mucho mas. Lo mas probable es que termine implementando algo similar a lo que plantee en el informe anterior, ya que el método anterior no me asegura una solución óptima y ademas es muy costoso computacionalmente cuando la cantidad de ciudades aumenta como en este caso
+Lo dejé corriendo por tres horas y no se completó el proceso, por lo cual este método está descartado por ahora. Volveré a él en caso de no tener éxito con otros métodos.
+El problema computacional arranca directamente en la lectura del problema. Al principio calculo una matriz de distancias entre puntos, que se calcula a través de 2 for anidados. En el primer problema eran 150*150 iteraciones lo cual era aceptable. En este caso son mas de 320.000.000, por lo que no creo que pueda hacerlo de esta forma.
+
+Entrada 2 (Miércoles 11/10/23)
+
+6 Dias después y un parcial de Estructura del computador de por medio, implementé lo que plantee en la primer entrada. Generar recorridos aleatorios y verificar que cumplen las restricciones. El problema es que es muy difícil generar una solución completamente aleatoria que cumpla con las restricciones, por lo que ahora voy a intentar implementar algo similar pero que al toparse con que se rompe una restricción, no descarte el recorrido sino que lo modifique.
+
+La aleatoriedad no es mi amiga, me da un recorrido muy largo (de unos 59 millones) y no veo viable hacerlo a base de generar respuestas aleatorias y combinarlas, ya que las restricciones dificultan mucho ese proceso, por lo que supongo que probaré con armarlo a la fuerza, generando soluciones posibles por demanda y ordenándolas por distancia.
+
+Entrada 3 Sábado 14/10/23
+
+Volví a probar el método que usé para el primer problema, pero esta vez optimizando la forma en la que obtengo la matriz de distancias. Ahora usé numpy, inicalizando una matriz cúbica de (18512,18512,2) en donde se guardan las distancias entre sucursales y hay dos espacios en el eje Z en donde se guarda la distancia y con respecto a que sucursal es esa distancia. También optimicé el calculo de la distancia al evitar invocar la función pow. Además, previamente probaba el método iniciando con todos los puntos posibles, pero debido al tamaño de este problema decidí cortar en el momento en el que obtengo una respuesta válida. De esta forma, llegué a una respuesta de al rededor de 950.000 lo cual es muchísimo mejor que lo que conseguí anteriormente. Mañana dejaré corriendo la computadora para que me genere al menos 10 recorridos válidos y que elija el mejor.
+
+Después de dejar la computadora corriendo toda la noche, me generó 15 recorridos válidos con el mejor siendo de 946000, mañana la dejaré toda la noche de vuelta por última vez para ver si consigo algún resultado mejor
+
+Entrada 4 Lunes 16/10/23
+
+Finalmente la dejé corriendo toda la mañana de ayer hasta que encontrase una solución mejor que 940000, pero en un momento ocurrió un error de índex por lo cual se frenó la iteración y no encontré una solución mejor, por lo que di por finalizados (por ahora) mis intentos de hallar una solución aún mejor, ya que no llegaría a lograrlo antes de la entrega.
+
+IMPRESIONES DEL PROBLEMA
+
+En este caso me costó imaginarme una forma de optimizar este problema de forma que sea posible resolverlo en una cantidad razonable de tiempo. Por eso, comencé probando con la generación aleatoria de soluciones para luego combinarlas, pero después me di cuenta que el factor de la carga complicaba mucho este proceso, por lo cual busqué la optimización del método que ya tenía, que no me da la solución óptima pero se que me da una buena solución. Finalmente llegué a una implementación que genera un recorrido válido y generado en base a la sucursal mas próxima que cumple la demanda cada 10/15 minutos.
+
+COMENTARIOS FINALES
+
+Yo creo que con este mismo método todavía hay mejores soluciones, pero debido a la falta de poder computacional y de tiempo, me conformo con la respuesta a la que llegué. 
