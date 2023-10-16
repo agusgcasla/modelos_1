@@ -59,7 +59,6 @@ class Entrega:
                 matriz_de_sucursales[i.numero - 1,j.numero-1,0] = j.numero
                 matriz_de_sucursales[i.numero - 1,j.numero-1,1] = distancia(i,j) 
                 
-        print("listo loco")
         return matriz_de_sucursales
      
 
