@@ -24,6 +24,10 @@ Entrada 4 Lunes 16/10/23
 
 Finalmente la dejé corriendo toda la mañana de ayer hasta que encontrase una solución mejor que 940000, pero en un momento ocurrió un error de índex por lo cual se frenó la iteración y no encontré una solución mejor, por lo que di por finalizados (por ahora) mis intentos de hallar una solución aún mejor, ya que no llegaría a lograrlo antes de la entrega.
 
+Entrada Lunes 16/10/23 bis
+
+En una última corrida encontré una solución mejor, una de 942000.
+
 IMPRESIONES DEL PROBLEMA
 
 En este caso me costó imaginarme una forma de optimizar este problema de forma que sea posible resolverlo en una cantidad razonable de tiempo. Por eso, comencé probando con la generación aleatoria de soluciones para luego combinarlas, pero después me di cuenta que el factor de la carga complicaba mucho este proceso, por lo cual busqué la optimización del método que ya tenía, que no me da la solución óptima pero se que me da una buena solución. Finalmente llegué a una implementación que genera un recorrido válido y generado en base a la sucursal mas próxima que cumple la demanda cada 10/15 minutos.
