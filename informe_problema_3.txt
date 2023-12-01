@@ -1,0 +1,20 @@
+PROBLEMA 3
+
+Lo que se hizo fue resolver el mismo problema del viajante de 100 ciudades, utilizando el software CMPLEX con dos métodos distintos: el método de eliminación de subtours y el método TMZ. 
+El método TMZ es aquel que vimos en clase. En este método la eliminación de subtours se consigue gracias a la existencia de las variables Ui, que denotan en el orden en el que la ciudad i es visitada. Estas variables deben existir para todas las ciudades menos para la ciudad 0 (la ciudad de inicio). Ademas, estas variables deben estar relacionadas de la siguiente forma:
+Ui - Uj + n Yij < n-1
+Donde Yij es la variable bivalente que indica si luego de la ciudad i se visita la ciudad j, y n es la cantidad de ciudades.
+En cambio, en el metodo de los subtours se corre el problema por primera vez, si se producen subtours se selecciona uno, se agrega una restricción que lo elimina y se vuelve a correr. Se repite este proceso hasta finalizar y tener un solo subtour.
+
+
+El tiempo de ejecución del método TMZ es considerablemente mayor al de la eliminación de subtours. Esto probablemente se debe a que en el método TMZ, existen todas las variables Xij, por lo que la cantidad de modelos que tiene que resolver el software son muchos mas que en el de los subtours, ya que en éste, solo existen las Xij cuando i<j. Esto se debe a que en este problema del viajante, no importa si el viaje es desde i hasta j o desde j hasta i, ya que la distancia es la misma. Entonces, con las Xij reducidas de esta forma, aún así se tienen variables que relacionan a todas las ciudades con todas y al ir encadenando las ciudades que estan relacionadas, se obtiene el camino final. Esta reducción en variables ayuda considerablemente a disminuír el tiempo de ejecución. El método TMZ tuvo un tiempo de ejecución de 29300 segundos, mientras que el de subtours tuvo un tiempo de ejecución de 75 segundos.
+
+Luego de correrlo sin una solución inicial, modifiqué la heuristica realizada para la entrega del primer trabajo para obtener una solución aproximada para usarla como solución inicial en ambos métodos. Esto logró que el tiempo de ejecución disminuyese considerablemente, ya que tenía una solución de la cual partir y no tuvo que generarla de 0. Con una solucón inicial cercana a la óptima de alrededor de 5500, el método de los subtours tuvo un tiempo de ejecución de 68 segundos, lo cual mejoró en comparación a lo hecho sin solución inicial. En cambio, el método TMZ con la solución inicial tardó 19800 segundos, lo cual es una gran mejora con respecto a lo obtenido anteriormente sin la solución inicial.
+
+GRAFICOS
+
+En el repositorio de github se encuentran dos gráficos: uno del método TMZ con solución inicial y otro sin. 
+En el gráfico sin solución inicial, se ve que el punto amarillo (la mejor solución entera encontrada) está por encima del valor de 8000 y no baja de los 6000 en los 100 segundos que se ve en el gráfico, lo cual muestra que será mas lento que incluyendo una solución inicial. Esto se puede ver en el gráfico que incluye la solución inicial, ya que la mejor solución encontrada comienza por debajo de los 6000 y a los 100 segundos ya se encuentra por debajo de los 5600, por lo que encontrará mucho mas rápido la solución optima de 5249,62
+
+
+
